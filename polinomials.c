@@ -16,7 +16,7 @@ Node* createNode(int coeff, int exp)
 	{
         printf("Memory allocation failed.\n");
         exit(EXIT_FAILURE);
-    }
+    	}
     newNode->coefficient = coeff;
     newNode->exponent = exp;
     newNode->next = NULL;
@@ -30,27 +30,27 @@ void insertTerm(Node** poly, int coeff, int exp)
     if (*poly == NULL) 
 	{
         *poly = newNode;
-    } 
+    	} 
 	else 
 	{
         Node* current = *poly;
         while (current->next != NULL) 
 		{
             current = current->next;
-        }
+        	}
         current->next = newNode;
-    }
+    	}
 }
 
 // Function to display a polynomial
 void displayPolynomial(Node* poly) 
 {
     while (poly != NULL) 
-	{
+    {
         printf("%dx^%d", poly->coefficient, poly->exponent);
         poly = poly->next;
         if (poly != NULL) 
-		{
+	{
             printf(" + ");
         }
     }
@@ -62,7 +62,7 @@ Node* addPolynomials(Node* poly1, Node* poly2)
 {
     Node* result = NULL;
     while (poly1 != NULL || poly2 != NULL) 
-	{
+    {
         int coeff1 = (poly1 != NULL) ? poly1->coefficient : 0;
         int coeff2 = (poly2 != NULL) ? poly2->coefficient : 0;
         int sumCoeff = coeff1 + coeff2;
@@ -74,13 +74,13 @@ Node* addPolynomials(Node* poly1, Node* poly2)
         insertTerm(&result, sumCoeff, maxExp);
 
         if (poly1 != NULL)
-		{
-			poly1 = poly1->next;
-		}
+	{
+		poly1 = poly1->next;
+	}
         if (poly2 != NULL) 
         {
-			poly2 = poly2->next;
-		}
+		poly2 = poly2->next;
+	}
     }
     return result;
 }
@@ -102,9 +102,9 @@ Node* subtractPolynomials(Node* poly1, Node* poly2)
         insertTerm(&result, diffCoeff, maxExp);
 
         if (poly1 != NULL) 
-		{
-			poly1 = poly1->next;
-		}
+	{
+		poly1 = poly1->next;
+	}
         if (poly2 != NULL) 
 		{
 			poly2 = poly2->next;
